@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import BubbleBackground from "../components/BubbleBackground";
+import { IBM_Plex_Sans_Thai } from "next/font/google"
+
+const ibmPlexSansThai = IBM_Plex_Sans_Thai({
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  subsets: ['thai', 'latin'],
+  display: 'swap',
+  variable: '--font-ibm-plex-sans-thai',
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ibmPlexSansThai.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Background animation rendered behind all content */}
+        <BubbleBackground />
         {children}
       </body>
     </html>
